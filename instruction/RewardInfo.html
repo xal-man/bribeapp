@@ -1,0 +1,47 @@
+{{ extends 'global/Page.html' }}
+{{ block title }}Imbalan{{ endblock }}
+
+{{ block content }}
+
+<p>
+    Dalam bagian ini Anda akan mendapatkan ilustrasi reward dan punishment yang bisa Anda dapatkan berdasarkan keputusan Anda.
+</p>
+
+<p>
+    Reward dan Punishment akan mengacu kepada empat komponen:
+    A. Nilai hadiah yang ditawarkan
+    B. Gaji dan jabatan yang didapatkan oleh pemain
+    C. Keputusan pemain terhadap upaya pemberian hadiah
+    D. Keputusan pemain untuk melakukan tindakan whistleblowing.
+</p>
+
+<p>
+    Cara menghitungnya sebagai berikut:
+    1. Pertama, Anda akan mendapat gaji berdasarkan jabatan Anda. Staf = 7.500 UE, Kepala Tim = 10.000 UE
+    2. Jika Anda menerima hadiah dan tidak dilaporkan, Anda berpeluang memiliki hadiah tersebut.
+    3. Jika Anda menerima hadiah dan dilaporkan, Anda berpeluang kehilangan hadiah tesebut, sekaligus mendapatkan hukuman denda.
+    4. Jika Anda tidak menerima hadiah, Anda berpeluang mendapatkan reward.
+    5. Jika Anda melaporkan tindakan (whistleblowing) dan terbukti, Anda berpeluang mendapatkan reward.
+    6. Basis perhitungan aktivitas 2-5 menggunakan nilai hadiah.
+</p>
+
+<p>
+    Selain itu, ada probabilitas audit sebesar 30% untuk setiap ronde yang tidak dilaporkan oleh pemain. Artinya, meskipun tidak dilaporkan, tetap ada kemungkinan pemain mendapat punishment bila menerima suap.
+</p>
+
+<p>
+    Ilustrasi imbalan dengan 
+    - Nilai hadiah sebesar 10.000 UE
+    - Gaji Staf = 7.500 UE dan gaji Kepala Tim = 10.000 UE
+    dapat digambarkan pada gambar berikut. 
+</p>
+
+<h4>Gambaran Imbalan</h4>
+
+<img src="{{ static 'bribery/skema_payoff.png' }}" width="960px"/>
+
+{{  formfields }}
+
+{{ next_button }}
+
+{{ endblock }}

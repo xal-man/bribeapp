@@ -1,0 +1,88 @@
+{{ extends 'global/Page.html' }}
+
+{{ block title }}
+
+{{ if player.role == C.STAF_ROLE }}
+
+Ronde {{ subsession.round_number }} - Auditor Staf [Decision 1]
+
+{{ else }}
+
+Ronde {{ subsession.round_number }} - Auditor Kepala Tim [Menunggu Pemain Lain]
+
+{{ endif }}
+
+{{ endblock }}
+
+{{ block content }}
+
+{{ if player.role == C.STAF_ROLE }}
+
+<b>
+Silakan baca halaman ini dengan seksama. Anda akan 
+diminta mengambil keputusan yang akan berpengaruh 
+terhadap payoff Anda.
+</b>
+
+<p>
+    Anda adalah seorang staf Auditor pajak yang bekerja pada
+    kantor pajak X. Kantor ini internal controlnya biasa saja.
+    Anda memiliki seorang Kepala Tim yang dapat mengoreksi
+    hasil kerja Anda. Gaji Anda sekarang senilai <b>{{ gaji }}</b> 
+</p>
+
+<p>
+    Awal pekan ini. Anda mendapat tugas mengoreksi laporan
+    pajak perusahaan H, wajib pajak badan (tarif pajak 25%).
+    Pada periode ini, nilai pajak yang dilaporkan adalah
+    <b>{{ evasion }}</b>. Dari hasil audit Anda, perusahaan H
+    berpenghasilan <b>{{ earning }}</b>.
+</p>
+
+<p>
+    Pagi tadi, pihak perusahaan H menawarkan hadiah <b>{{ bribe }}</b>
+    agar Anda menyetujui laporan keuangan mereka.
+</p>
+
+{{ formfields }}
+
+<button class="otree-btn-next btn btn-primary" id="tax" onclick="send()">Lanjut</button>
+
+<script>
+    function send() {
+        liveSend(parseInt(formInputs.staff1_first_qstn.value));
+    }
+
+    function liveRecv(data) {
+    console.log('received a message!', data);
+    // your code goes here
+    }
+</script>
+
+{{ else }}
+
+<b>
+Silakan menunggu sesaat. Pemain lain sedang membuat keputusan 
+dalam game. Halaman ini akan berubah otomatis setelah pemain lain 
+membuat keputusannya.
+</b>
+
+<button class="btn btn-primary" type="submit" id="tax">Lanjut</button>
+
+<script>
+
+    let tax = document.getElementById('tax')
+    tax.style.display = 'none'
+
+    function liveRecv(data) {
+        let type = data.type;
+        console.log(data)
+        if (type === 'game_finished') {
+            tax.click()
+        }
+    }
+</script>
+
+{{ endif }}
+
+{{ endblock }}

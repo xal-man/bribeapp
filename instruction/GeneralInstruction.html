@@ -1,0 +1,63 @@
+{{ extends 'global/Page.html' }}
+{{ block title }}Instruksi Umum{{ endblock }}
+
+{{ block content }}
+
+<b>
+    Silakan baca halaman ini dengan seksama. Anda akan ditanya tentang pemahaman Anda di akhir halaman ini. 
+</b>
+
+<p>
+    Dalam eksperimen ini, Anda akan bermain dalam kumpulan ronde permainan. Sebelum memulai permainan Anda akan dipasangkan dengan satu orang lain secara acak dan anonim. Ada empat peran yang terlibat dalam permainan ini, yakni Wajib Pajak (non player), Anda, rekan Anda, Negara (non player).
+</p>
+
+<p>
+    Pada tiap-tiap ronde, masing-masing Anda akan berperan sebagai Staf atau Kepala tim. Anda berdua akan dihadapkan pada situasi berikut ini:
+</p>
+
+<p>
+    1. Tim Anda sedang memeriksa laporan pajak milik Wajib Pajak perusahaan. Pada tengah proses, perusahaan tersebut menawarkan hadiah kepada Anda atau rekan Anda agar menyetujui besaran pajak yang mereka laporkan.
+</p>
+
+<p>
+    2. Pemain pertama, Staf, akan mendapat penawaran hadiah dari wajib pajak. Staf akan mengambil keputusan pertama dengan opsi:
+    a. menolak hadiah tersebut dan sekaligus mengusulkan kepada atasan untuk menetapkan pajak terutang sesuai pemeriksaan
+    b. menerima hadiah tersebut dan menyetujui permintaan wajib pajak.
+</p>
+
+<p>
+    3. Selanjutnya, Staf meneruskan informasi tersebut kepada Kepala Tim,
+</p>
+
+<p>
+    4. Kepala Tim, yang mengetahui informasi tersebut berwenang untuk menganulir usulan yang diberikan oleh Staf. Opsi yang dimiliki oleh Kepala Tim adalah:
+    a. menolak hadiah dan menetapkan nilai pajak terutang sesuai pemeriksaan
+    b. menerima hadiah dari wajib pajak dan menetapkan nilai pajak sesuai permintaan wajib pajak
+</p>
+
+<p>
+    5. Selanjutnya Kepala Tim memberitahukan informasi tersebut kepada Staf.
+</p>
+
+<p>
+    6. Staf, yang mengetahui tindakan Kepala Tim, kemudian dihadapkan pada situasi whistleblowing. Staf akan mengambil keputusan keduanya dengan opsi:
+    a. Melaporkan peristiwa pemberian hadiah ini kepada Negara
+    b. Tidak melaporkan peristiwa pemberian hadiah kepada Negara
+</p>
+
+<h4>Skema Permainan</h4>
+<img src="{{ static 'bribery/Skema.png' }}" width="960px"/>
+
+<p>
+    Situasi 1 sampai dengan 6 merupakan situasi dalam satu ronde. Situasi ini akan terus berulang hingga 12 ronde, namun tiap ronde tidak berlanjut ke ronde berikutnya. Di samping itu, pay off (imbalan) yang akan Anda bawa pulang akan diambil secara acak dari salah satu ronde tersebut. Oleh karenanya, Anda diharapkan untuk melakukan permainan sebaik mungkin pada tiap ronde agar memiliki peluang membawa imbalan yang lebih besar.
+</p>
+
+<p>
+    Berdasarkan keputusan para pemain, terdapat 8 kelompok imbalan dalam tiap ronde.
+</p>
+
+{{ formfields }}
+
+{{ next_button }}
+
+{{ endblock }}

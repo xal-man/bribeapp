@@ -1,0 +1,89 @@
+{{ extends 'global/Page.html' }}
+
+{{ block title }}
+
+{{ if player.role == C.KATIM_ROLE }}
+
+Ronde {{ subsession.round_number }} - Auditor Kepala Tim [Decision 2]
+
+{{ else }}
+
+Ronde {{ subsession.round_number }} - Auditor Staf [Menunggu Pemain Lain]
+
+{{ endif }}
+
+{{ endblock }}
+
+{{ block content }}
+
+{{ if player.role == C.KATIM_ROLE }}
+
+<b>
+Silakan baca halaman ini dengan seksama. Anda akan diminta 
+mengambil keputusan yang akan berpengaruh terhadap payoff Anda.
+</b>
+
+<p>
+    Anda adalah seorang Auditor Kepala yang bekerja pada kantor pajak X. 
+    Kantor ini internal controlnya biasa saja. Anda memiliki staf yang dapat 
+    melaporkan hasil kerja untuk Anda koreksi. Gaji Anda sekarang senilai 
+    <b>{{ gaji }}</b>.
+</p>
+
+<p>
+    Awal pekan ini, tim Anda mengoreksi laporan 
+    pajak perusahaan H, wajib pajak badan (tarif pajak 25%).
+    Periode ini, nilai pajak yang dilaporkan 
+    adalah <b>{{ evasion }}</b>. Dari hasil audit tim Anda, perusahaan H 
+    berpenghasilan <b>{{ earning }}</b>. 
+</p>
+
+<p>
+    Pagi tadi, staf Anda mengabarkan bahwa pihak perusahaan H 
+    menawarkan hadiah <b>{{ bribe }}</b> agar Anda menyetujui
+    laporan keuangan mereka.
+    Staf Anda memberikan informasi kepada Anda bahwa ia <b>{{ decision1 }}</b>
+</p>
+
+{{ formfields }}
+
+<button class="otree-btn-next btn btn-primary" id="tax" onclick="send()">Lanjut</button>
+
+<script>
+    function send() {
+        liveSend(parseInt(formInputs.katim_first_qstn.value));
+    }
+
+    function liveRecv(data) {
+    console.log('received a message!', data);
+    // your code goes here
+    }
+</script>
+
+{{ else }}
+
+<b>
+    Silakan menunggu sesaat. Pemain lain sedang membuat keputusan 
+    dalam game. Halaman ini akan berubah otomatis setelah pemain lain 
+    membuat keputusannya.
+</b>
+
+<button class="btn btn-primary" type="submit" id="tax">Next</button>
+
+<script>
+
+    let tax = document.getElementById('tax')
+    tax.style.display = 'none'
+
+    function liveRecv(data) {
+        let type = data.type;
+        console.log(data)
+        if (type === 'game_finished') {
+            tax.click()
+        }
+    }
+</script>
+
+{{ endif }}
+
+{{ endblock }}

@@ -1,0 +1,46 @@
+{{ extends 'global/Page.html' }}
+
+{{ block title }}
+
+Ronde {{ subsession.round_number }} - Hasil
+
+{{ endblock }}
+
+{{ block content }}
+
+<b>
+    Silakan baca halaman ini dengan seksama. Halaman ini adalah ringkasan ronde {{ subsession.round_number }} dan payoff Anda
+</b>
+
+<p>
+    Pada ronde {{ subsession.round_number }}, para pemain melakukan keputusan sebagai berikut:
+</p>
+
+<ol>
+    <li>
+        Staf melakukan <b>{{ decision1 }}</b>
+    </li>
+    <li>
+        Kepala Tim melakukan <b>{{ decision2 }}</b>
+    </li>
+    <li>
+        Staf melakukan <b>{{ decision3 }}</b>
+    </li>
+</ol>
+
+<p>
+    Berdasarkan keputusan para pemain, maka payoff yang didapat pemain pada game 1 adalah sebesar:
+</p>
+
+<ol>
+    <li>
+        Staf sebesar <b>{{ player.payoff }} UE</b>
+    </li>
+    <li>
+        Kepala Tim sebesar <b>{{ player.payoff }} UE</b>
+    </li>
+</ol>
+
+<button class="otree-btn-next btn btn-primary" id="tax" onclick="send()">Lanjut</button>
+
+{{ endblock }}
